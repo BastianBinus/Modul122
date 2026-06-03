@@ -1,0 +1,17 @@
+Die Datei worldcupplayerinfo.txt enthält Angaben zu allen Spielern, die an der Fussball-
+Weltmeisterschaft 2014 mitgespielt haben.
+
+Die Datei countries.txt enthält die Namen aller Länder, die an der Weltmeisterschaft vertreten
+waren. Schreiben Sie ein Script, das folgendes macht:
+• die Datei countries.txt einliest (jede Zeile enthält genau 1 Ländernamen)
+• für jedes Land eine Datei erstellt mit dem Namen <land>.txt, das die Angaben der Spieler
+enthält, die für dieses Land gespielt haben. Dabei ist <land> der Name des Landes, wie er aus
+der Datei countries.txt ausgelesen wurde.
+
+Schreiben Sie ein Script, das eine von Ihnen geschriebene kleine mathematische Funktion enthält.
+Diese Funktion nimmt einen Wert entgegen und gibt einen Wert zurück (sie könnte zum Beispiel den
+übergebenen Wert einfach quadrieren). Damit Sie das Script mit vielen verschiedenen Werten testen
+können, ohne es immer wieder neu zu starten oder anzupassen, liest Ihr Script die Testdaten aus
+einer Textdatei testdata.txt. Diese Datei enthält pro Zeile eine Zahl.
+
+Schreiben Sie ein eigenes Script, das Werte aus einer Textdatei einliest und sinnvoll verarbeitet.

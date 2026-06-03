@@ -1,0 +1,13 @@
+Schreiben Sie einen sed-Befehl, der ein Datum im Format 27.05.2025 in das Format bringt, wie
+MySQL es erwartet, also 2025-05-27
+Datei: datum.txt
+
+Die Nummer einer Kreditkarte besteht aus 16 Ziffern. Normalerweise teilt man die Ziffern in vier
+Blöcke mit je 4 Ziffern, das muss aber nicht so sein.
+Schreiben Sie einen sed-Befehl, der eine gültige Kreditkartennummer erkennt und wie folgt formatiert
+(es erscheinen nur die 4 letzten Ziffern im Klartext): **** **** **** 7890
+(Denken Sie nicht zu kompliziert. Die Sterne sind fixer Text.)
+Datei: kreditkartennr.txt
+
+Schreiben Sie einen eigenen sed-Befehl, der einen gültigen Text oder eine gültige Zahl erkennt
+und umformatiert.

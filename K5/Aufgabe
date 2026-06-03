@@ -1,0 +1,22 @@
+Schreiben Sie ein Script, das als Parameter den Namen eines Verzeichnisses erhält und dann die
+Namen aller Einträge in diesem Verzeichnis ausgibt.
+
+
+Schreiben Sie ein Script, das als Parameter den Namen eines Verzeichnisses erhält. Das Script gibt
+dann nur die Anzahl der direkten Unterverzeichnisse aus.
+
+
+Schreiben Sie ein Script, das als Parameter den Namen eines Verzeichnisses erhält. Das Script soll
+dann alle Dateien in diesem Verzeichnis umbenennen. Die erste Datei heisst danach FILE1 (ohne
+Extension), die zweite FILE2 und so weiter.
+
+
+Überlegen Sie sich eine eigene Aufgabe und schreiben Sie das entsprechende Script. Das Script
+muss eine Schleife über Dateien und/oder Verzeichnisse machen und eine sinnvolle Aufgabe erledigen.
+
+Eigene Idee:
+
+Backup
+Es erstellt falls och kein Backupfolder im jetzigen Verzeichniss ist ein Backup folder.
+Dann benutzt es das Parameter eines Verzeichnisses und frägt ob nur Files oder auch Directives gespeichert werden sollen
+dann savet es alle in den Folder und hängt an ihren Namen -Backup

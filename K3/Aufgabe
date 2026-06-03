@@ -1,0 +1,26 @@
+Schreiben Sie ein Script, welches zwei Zahlen als Parameter erhält. Berechnen Sie dann die Summe
+und das Produkt der beiden Zahlen. Geben Sie die beiden Ergebnisse aus.
+
+
+Schreiben Sie ein kleines Script, das eine Zahl als Parameter erhält.
+• Erstellen Sie im Script eine Variable und weisen Sie ihr den Wert des Parameters zu.
+• Geben Sie den Wert der Variable aus.
+• Erhöhen Sie danach den Wert der Variable um 1.
+• Geben Sie den neuen Wert aus.
+• Erhöhen Sie den Wert der Variable um 2.
+• Geben Sie den neuen Wert aus.
+
+
+Erstellen Sie in der Shell eine Variable my_increment, weisen Sie ihr den Wert 5 zu und exportieren
+Sie die Variable.
+
+
+Schreiben Sie ein neues Script, das eine Zahl als Parameter erhält.
+• Erstellen Sie im Script eine Variable und weisen Sie ihr den Wert des Parameters zu.
+• Geben Sie den Wert der Variable aus.
+• Erhöhen Sie danach den Wert der Variable um den Wert der vorher exportierten Variablen
+my_increment.
+• Geben Sie den neuen Wert Ihrer Variable aus.
+• Erhöhen Sie den Wert der Variable um den doppelten Wert der Variablen my_increment.
+• Geben Sie den neuen Wert Ihrer Variable aus.
+Machen Sie den Export der Variable my_increment wieder rückgängig.

@@ -1,0 +1,15 @@
+Ich kann grundlegende systemspezifische Befehle miteinander verknüpfen.
+
+• Geben Sie nur die Anzahl Einträge Ihres Home-Verzeichnisses aus.
+
+• Zeigen Sie alle Dateien in Ihrem Home-Verzeichnis an, welche die Silbe bash im Namen haben.
+
+• Geben Sie nur die Anzahl Einträge Ihres Home-Verzeichnisses aus, welche die Silbe bash im
+  Namen haben.
+
+• Geben Sie von allen Dateien in Ihrem Home-Verzeichnis, welche die Silbe bash im Namen
+  haben, alle Zeilen aus, die sowohl das Wort export wie auch das Wort PATH enthalten.
+
+• Geben Sie für alle Script-Dateien in Ihrem Home-Verzeichnis und seinen Unterverzeichnissen
+  alle Zeilen aus, welche das Wort cd enthalten. (Beachten Sie die Hinweise, die Sie von tldr
+  find erhalten.)

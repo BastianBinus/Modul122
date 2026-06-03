@@ -1,0 +1,22 @@
+Schreiben Sie ein Script, das einen Dateinamen als Parameter erhält. 
+Fragen Sie den Benutzer, was mit der Datei gemacht werden soll: 
+löschen oder 
+kopieren. 
+
+Falls die Datei gelöscht werden soll, dann fragen Sie beim Benutzer nach, ob die Datei wirklich gelöscht werden soll. 
+
+Falls die Datei kopiert werden soll, fragen Sie nach einem neuen Dateinamen für die Kopie. 
+
+Führen Sie dann die Aktion aus, die vom Benutzer gewählt wurde.
+
+
+Schreiben Sie ein Script, das zwei Dateinamen als Parameter erhält. Falls Sie für mindestens eine der
+Dateien Schreibrecht haben, geben Sie die Meldung aus “Schreibrecht vorhanden”.
+
+
+Schreiben Sie ein Script, das den Benutzer nach einer Jahreszahl fragt und den Wert einliest. Prüfen
+Sie, ob die Jahreszahl grösser als 1582 ist und kleiner als 2200.
+Berechnen Sie, ob das angegebene Jahr ein 
+Schaltjahr ist und geben Sie eine entsprechende Meldung aus. 
+
+(Berechnung: falls die Jahreszahldurch 4 teilbar ist, ist es ein Schaltjahr - ausser sie ist auch durch 100 teilbar,)

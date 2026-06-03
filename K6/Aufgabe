@@ -1,0 +1,23 @@
+Schreiben Sie ein Script mit den beiden Funktionen stars und lines.
+• Die Funktion stars erhält eine Zahl als Parameter. Sie gibt auf 1 Zeile dem Parameter
+entsprechend viele Sterne (*) aus. (Beachten Sie die Option -n beim Befehl echo.)
+• Die Funktion lines erhält ebenfalls eine Zahl als Parameter. Dieser gibt an, wie häufig die
+Funktion stars aufgerufen werden soll.
+• Im Script rufen Sie dann die Funktion lines auf mit dem Befehl lines 4.
+Der Aufruf Ihres Scripts sollte dann die folgende Ausgabe bewirken:
+*
+**
+***
+****
+
+Schreiben Sie ein Script mit einer Funktion factorial. Die Funktion soll eine Zahl als Parameter
+erhalten und eine Zahl zurückgeben. Berechnen Sie darin rekursiv (also nicht mit einer Schleife) die
+Fakultät der übergebenen Zahl. (Die Fakultät von n ist gleich n multipliziert mit der Fakultät von
+n-1.) Im Script rufen Sie dann die Funktion factorial auf. - Verwenden Sie für Ihre Tests keine
+Zahlen grösser 20.
+Überlegen Sie sich eine eigene Aufgabe und schreiben Sie das entsprechende Script. Das Script
+muss zwei Funktionen enthalten und eine Funktion muss die andere aufrufen. Mindestens eine der
+beiden Funktionen muss einen Wert zurückgeben, der von der aufrufenden Funktion ausgewertet wird.
+Die Funktionen dürfen nicht einfach Dummy-Funktionen sein, sondern etwas Sinnvolles berechnen.
+Beim Start des Scripts wird dann eine der Funktionen aufgerufen, die ihrerseits die andere Funktion
+aufruft.

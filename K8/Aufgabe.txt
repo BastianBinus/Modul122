@@ -1,0 +1,6 @@
+Erstellen Sie in Ihrer Arbeitsumgebung ein Script mit dem folgenden Inhalt: das folgende Script:
+#!/bin/bash
+echo "boot time $(date +%H:%M:%S)"
+Konfigurieren Sie Ihr System so, dass dieses Script bei jedem Neustart des Systems aufgerufen wird.
+Leiten Sie die Ausgabe des Scripts in eine Datei mit dem Namen bootlog.txt um.
+Dokumentieren Sie die crontab-Zeile in Ihrem Lernjournal.
