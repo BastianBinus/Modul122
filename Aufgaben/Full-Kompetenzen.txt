@@ -1,0 +1,1408 @@
+Kompetenzen
+2G: Ich kann ohne Hilfsmittel grundlegende systemspezifische Befehle benennen und beschreiben, was sie machen.
+
+2F: Ich kann grundlegende systemspezifische Befehle sinnvoll anwenden.
+
+2E: Ich kann grundlegende systemspezifische Befehle miteinander verknüpfen.
+
+Befehle
+Wenn wir in Linux mit einer Shell wie bash arbeiten, befinden wir uns immer irgendwo im Dateisystem. Das ist nicht anders als bei Windows mit der Eingabeaufforderung.
+
+Deshalb ist es wichtig, dass wir ein paar Befehle kennen, mit denen wir im Dateisystem navigieren können. Der Einfachheit halber wird hier für eine kurze Vorstellung der Befehle auf die sehr gute Seite von W3schools verwiesen.
+
+Navigationsbefehle
+pwd: zeigt unsere aktuelle Position im Dateisystem an (www.w3schools.com/bash/bash_pwd.php)
+
+ls: listet alle Dateien und Unterverzeichnisse des aktuellen Verzeichnisses auf (www.w3schools.com/bash/bash_ls.php)
+
+cd: wechselt in ein anderes Verzeichnis (www.w3schools.com/bash/bash_cd.php)
+
+Dateibefehle
+cat: Inhalt einer Datei anzeigen (www.w3schools.com/bash/bash_cat.php)
+
+cp: eine Datei kopieren (www.w3schools.com/bash/bash_cp.php)
+
+mv: eine Datei verschieben oder umbenennen (www.w3schools.com/bash/bash_mv.php)
+
+rm: eine Datei oder ein Verzeichnis löschen (www.w3schools.com/bash/bash_rm.php)
+
+chmod: Zugriffsberechtigungen für eine Datei oder ein Verzeichnis ändern (www.w3schools.com/bash/bash_chmod.php)
+
+mkdir: ein Verzeichnis erstellen (www.w3schools.com/bash/bash_mkdir.php)
+
+touch: erstellt eine neue (leere) Datei (www.w3schools.com/bash/bash_touch.php)
+
+wc: Zeilen, Wörter und Zeichen zählen (linuxize.com/post/linux-wc-command/)
+
+du: gibt den Speicherverbrauch des Verzeichnisses aus (www.w3schools.com/bash/bash_du.php)
+
+Suchbefehle
+grep: Dateien nach Mustern durchsuchen (www.w3schools.com/bash/bash_grep.php)
+
+find: Dateien oder Verzeichnisse suchen (www.howtoforge.de/anleitung/linux-find-befehl/)
+
+Befehle verknüpfen
+Manchmal möchten wir die Ausgabe eines Befehls direkt weiterverarbeiten. Das lässt sich in bash mit Pipes machen.
+
+Bei Pipes wird die Ausgabe von einem Befehl zur Eingabe des nächsten Befehls. Das erreicht man mit dem Zeichen | (ein senkrechter Strich).
+
+Hier ist ein kleines Beispiel zu Pipes. Sie kennen bereits den Befehl ls. Mit ihm geben wir den Inhalt eines Verzeichnisses aus. Mit dem folgenden Befehl geben wir den Inhalt des Verzeichnisses /usr/bin aus:
+
+ls /usr/bin
+
+Dieses Verzeichnis enthält sehr viele Dateien. Um alle zu sehen, müssen Sie nach oben scrollen.
+
+Wir können aber zusätzlich noch das Programm less verwenden. Das gibt eine Liste immer seitenweise aus und erlaubt es, nach oben und unten zu navigieren. Der Befehl, um less ebenfalls auszuführen, lautet:
+
+ls /usr/bin | less
+
+(Mit der Taste Q beenden Sie das Programm less.)
+
+Jetzt wird also die Ausgabe von ls nicht direkt am Bildschirm ausgegeben, sondern sie wird als Eingabe zum Programm less geleitet. Deshalb können Sie nun seitenweise durch alle Einträge des Verzeichnisses durchgehen.
+
+Wichtig ist zu verstehen, dass die beiden Programme nicht gleichzeitig gestartet werden. Zuerst arbeitet ls, dessen Ausgabe dann als Eingabe für less dient.
+
+Ein anderes Hilfsprogramm heisst grep. Es durchsucht die Eingabe nach bestimmten Mustern und gibt die Zeilen aus, welche das Muster enthalten.
+
+Wenn wir zum Beispiel wissen möchten, welche Befehle im Verzeichnis /usr/bin das Wort zip enthalten, können wir das so machen:
+
+ls /usr/bin | grep zip
+
+(Diese Information können wir auch auf eine andere Weise erhalten. Es geht hier darum zu zeigen, wie eine Pipe mit grep aussieht.)
+
+
+Kompetenzen
+3G: Ich kann ohne Hilfsmittel die Bedeutung von Systemvariablen, scripteigenen Variablen und Parametern beschreiben und auch sinnvolle Anwendungen davon beschreiben.
+
+3F: Ich kann Variablen erstellen und in einfachen Scripts anwenden.
+
+3E: Ich kann Variablen verändern und exportieren. Ich kann Parameter in Scripts einsetzen.
+
+Anlegen von Variablen
+(Sie haben bereits in der ersten Woche Variablen kennengelernt. Deshalb ist dieser Text kurzgehalten.)
+
+Wie in anderen Sprachen auch, können wir in bash Werte in Variablen zwischenspeichern, um sie später weiter zu verwenden.
+
+Eine Variable wird einfach angelegt durch ihren Namen und der Zuweisung eines Wertes.
+
+var1=23
+
+var2="Pratteln"
+
+Beachten Sie, dass um das Gleichheitszeichen herum keine Leerzeichen stehen dürfen.
+
+Falls ich auf den Wert einer Variable zugreifen möchte, muss vor dem Namen ein $-Zeichen stehen.
+
+echo $var1
+
+echo $var2
+
+Variablen, die in einem Script erstellt werden, sind nur innerhalb des Scripts sichtbar, und zwar innerhalb des ganzen Scripts. Wenn das Script beendet ist, gibt es auch die Variablen nicht mehr.
+
+Einer Variable die Rückgabe einer Funktion/eines Programms zuweisen
+Einer Variable können nicht nur fixe Werte zugewiesen werden, sondern auch die Rückgabe z.B. eines Programms. Das sieht dann so aus:
+
+var=$(command-name-here)
+
+var=$(command-name-here arg1)
+
+var=$(/path/to/command)
+
+var=$(/path/to/command arg1 arg2)
+
+Der Aufruf des Programms inklusive der Parameter muss also von $(   ) umrahmt sein.
+
+So könnte man sich z.B. das aktuelle Datum mit Uhrzeit in einer Variable speichern:
+
+now=$(date)							# Do 01 Mai 2025 16:38:21 CEST
+
+now=$(date "+%Y-%m-%d %H:%M:%S")	# 2025-05-01 16:38:31
+
+Werte berechnen
+Variablen können auch berechnete Werte zugewiesen werden. Hier ein paar Beispiele:
+
+numvar=23
+
+result=$((numvar * 19))
+
+echo $result	# 437
+
+
+
+numvar=12
+
+result=$((++numvar))
+
+echo $result	# 13
+
+Parameter
+Beim Starten von Scripts können Sie Werte mitgeben. Diese nennt man Parameter. Innerhalb des Scripts können Sie auf diese Werte zugreifen wie auf normale Variablen. Aber die Parameter haben vordefinierte Namen: $1 ist der erste Parameter, $2 der zweite Parameter etc.
+
+echo $1	# gibt den ersten Parameter aus
+
+echo $2	# gibt den zweiten Parameter aus
+
+(Sie haben das in der ersten Woche bereits ausprobiert.)
+
+Spezielle Variablen
+Ausser den Parametern gibt es noch andere vordefinierte Variablen, auf die Sie zugreifen können, ohne dass Sie diese deklarieren müssen.
+
+$0        # The name of the Bash script.
+
+$1 - $9   # The first 9 arguments to the Bash script.
+
+$#        # How many arguments were passed to the Bash script.
+
+$@        # All the arguments supplied to the Bash script.
+
+$?        # The exit status of the most recently run process.
+
+$$        # The process ID of the current script.
+
+$USER     # The username of the user running the script.
+
+$HOSTNAME # The hostname of the machine the script is running on.
+
+$SECONDS  # The number of seconds since the script was started.
+
+$RANDOM   # Returns a different random number each time it is referred to.
+
+$LINENO   # Returns the current line number in the Bash script.
+
+Umgebungsvariablen
+Bash stellt uns auch noch viele andere Variablen zur Verfügung. Alle Scripts oder Programme, die gestartet werden, haben Zugriff auf diese Variablen. Sie werden Umgebungsvariablen genannt. Sie können sich die Liste anzeigen lassen.
+
+env
+
+Sie können selbst solche Variablen erstellen. Allerdings können Sie dies nicht aus einem Script heraus machen. Ein Script läuft in einem eigenen Subprocess von bash. Falls Sie also in einem Script etwas exportieren, würde das wieder verschwinden, sobald das Script beendet ist.
+
+Sie können aber direkt in der Shell eigene Variablen erstellen und exportieren. Dies geschieht mit dem folgenden Befehl:
+
+export my_var=42
+
+Es sieht fast gleich aus, wie die Deklaration einer Variable in einem Script. Es ist einfach nur export davorgestellt. Sie könnten jetzt in allen Scripts, die Sie in der aktuelle Session starten, auf diese Variable zugreifen.
+
+Falls Sie die Variable wieder verschwinden lassen möchten, erreichen Sie das mit:
+
+unset my_var
+
+Farbige Ausgaben
+Die Ausgabe von Texten und Werten kann mit Farben ein wenig interessanter gestaltet werden. Beachten Sie dazu die Hinweise auf dieser Seite.
+
+Hier ein Beispiel (beachten Sie das -e zwischen echo und dem String):
+
+#!/bin/bash
+
+echo -e "Das ist \e[92mgrün\e[0m."
+
+echo -e "Das ist \e[33mgelb\e[0m."
+
+echo -e "Das ist \e[91mrot\e[0m."
+
+Die Ausgabe sieht dann so aus (das genaue Aussehen ist auch noch von Ihren Farbeinstellungen abhängig):
+
+Das ist grün.
+
+Das ist gelb.
+
+Das ist rot.
+
+
+Kompetenzen
+4G: Ich kann ohne Hilfsmittel die Einfach- und Mehrfach-Verzweigung erklären und sinnvolle Anwendungen für beide Varianten beschreiben.
+
+4F: Ich kann in einem Script sowohl die Einfachverzweigung wie auch die Mehrfachverzweigung sinnvoll anwenden.
+
+4E: Ich kann in einem Script einfache Verzweigungen anwenden, deren Bedingung aus mehreren Teilbedingungen bestehen. Ausserdem kann ich auch verschachtelte Einfach- und Mehrfachverzweigungen anwenden.
+
+Einfache Verzweigung
+Sie haben bereits die Programmiersprache Java kennengelernt. Sie können einfache Programme in dieser Sprache schreiben. Dabei haben Sie gelernt, dass es möglich ist im Programmablauf Entscheidungen zu treffen. Dazu verwenden Sie in Java das Schlüsselwort if.
+
+Bei Scripts ist genau das gleiche möglich. Wir können Entscheidungen treffen und so steuern, welche Befehle ausgeführt werden sollen. Auch hier wird das Wort if verwendet. Aber die Formulierung der Bedingung sieht sehr anders aus als in Java.
+
+Schauen wir uns zuerst den grundsätzlichen Aufbau von if an:
+
+if bedingung
+
+then
+
+    befehl1
+
+    befehl2
+
+else
+
+    befehl3
+
+fi
+
+Nach if kommt eine Bedingung. Diese Bedingung ist ein Befehl, der ausgeführt wird. Dieser Befehl gibt einen Wert (eine ganze Zahl) zurück. Dabei bedeutet:
+
+0: die Bedingung ist erfüllt (wahr)
+
+jede andere Zahl: die Bedingung ist nicht erfüllt (falsch)
+
+Die Bedingung kann auf verschiedene Weise formuliert werden. Wir schauen uns zwei Varianten an.
+
+Das else ist wie bei Java optional. Es kann vorkommen, muss aber nicht. Mehrere if können wie bei Java geschachtelt werden.
+
+Formulierung mit test
+Der Befehl test ist ein interner Befehl. Er erhält Parameter, die eine Bedingung formulieren und wertet diese aus.
+
+Die Formulierung dieser Bedingung sieht ein wenig kryptisch aus und ist nicht so intuitiv zu lesen wie in Java. Hier ist ein Überblick über ein paar gebräuchliche Vergleichsoperatoren. Die vollständige Liste ist länger.
+
+
+Hier ist ein sehr einfaches Beispiel für einen String-Vergleich.
+
+wert="Basel"
+
+if test "$wert" = "Bern"
+
+then
+
+echo "der Vergleich ist korrekt"
+
+else
+
+echo "der Vergleich ist nicht korrekt"
+
+fi
+
+Ein paar Punkte könnten Ihnen auffallen:
+
+Der Ausdruck $wert steht in Anführungszeichen. Dies ist streng genommen nicht notwendig aber sehr empfohlen. Er verhindert einen Fehler, falls die Variable Leerzeichen enthält.
+
+Vor dem Gleichheitszeichen ist ein Leerzeichen. Beim Setzen eines Wertes ist das Leerzeichen wegzulassen. Hier ist es notwendig, damit alles richtig erkannt wird.
+
+Eine if-Konstruktion wird mit einem fi abgeschlossen.
+
+Testen Sie das obige Beispiel einmal in einem eigenen Script aus. Schreiben Sie immer nur einen Befehl auf eine Zeile.
+
+Wenn wir mit Zahlen arbeiten, sehen die Vergleichsoperatoren ein wenig merkwürdig aus. Die Anwendung ist aber ganz einfach. Hier ein Beispiel, das zwei Variablen vergleicht.
+
+zahl1=42
+
+zahl2=43
+
+if test $zahl1 -eq $zahl2
+
+then
+
+echo $zahl1 "ist gleich" $zahl2
+
+else
+
+echo $zahl1 "ist nicht gleich" $zahl2
+
+fi
+
+Eine sehr häufige Anwendung ist der Test mit Dateien. Im Beispiel unten wird getestet, ob eine bestimmte Datei existiert.
+
+fname="/etc/hosts"
+
+if test -e "$fname"
+
+then
+
+echo "$fname" "existiert"
+
+else
+
+echo "$fname" "existiert nicht"
+
+fi
+
+(Falls eine Variable den Namen einer Datei oder eines Ordners enthält, sollte sie beim Auslesen von Anführungszeichen umrahmt sein. Damit beugt man Fehlern vor, wenn der Pfad Leerzeichen enthält.)
+
+Spielen Sie mit den Beispielen oben ein wenig herum. Versuchen Sie andere Eigenschaften zu testen oder andere Vergleiche zu machen.
+
+Formulierung mit [ und ]
+Die Version mit dem ausgeschriebenen Befehl test werden Sie eher selten sehen. Viel gebräuchlicher ist eine verkürzte Schreibweise. Dabei wird mit eckigen Klammern gearbeitet. Die öffnende eckige Klammer [ steht dabei für den Befehl test, den wir gerade vorher kennengelernt haben.
+
+Die Parameter werden so angegeben wie bei test, aber als letzter Parameter muss ein ] kommen. So wird das Ende der Parameter erkannt.
+
+Die obigen drei Beispiele sehen dann so aus:
+
+wert="Basel"
+
+if [ "$wert" = "Bern" ]
+
+then
+
+echo "der Vergleich ist korrekt"
+
+else
+
+echo "der Vergleich ist nicht korrekt"
+
+fi
+
+
+
+zahl1=42
+
+zahl2=43
+
+if [ $zahl1 -eq $zahl2 ]
+
+then
+
+echo $zahl1 "ist gleich" $zahl2
+
+else
+
+echo $zahl1 "ist nicht gleich" $zahl2
+
+fi
+
+
+
+fname="/etc/hosts"
+
+if [ -e "$fname" ]
+
+then
+
+echo "$fname" "existiert"
+
+else
+
+echo "$fname" "existiert nicht"
+
+fi
+
+Beachten Sie die Leerzeichen um die eckigen Klammern herum. Sie sind notwendig.
+
+Anzahl Parameter überprüfen
+Wenn wir Scripts schreiben, die beim Start Parameter erhalten, dann ist es wichtig, dass wir bei der Ausführung prüfen, ob die Parameter auch angegeben wurden. Dazu steht eine spezielle Variable zur Verfügung, die wir nicht selbst setzen müssen sondern die wir nur abzufragen haben. Wie das geschieht, sehen Sie im folgenden Beispiel:
+
+# Wurde die richtige Anzahl Parameter übergeben?
+
+if [ $# -ne 2 ]
+
+then
+
+# nein -> Fehlermeldung ausgeben
+
+echo "die Anzahl Parameter stimmt nicht"
+
+# Script beenden (mit einem Wert ungleich 0)
+
+exit 1
+
+fi
+
+Mehrfachverzweigung
+Es kommt immer wieder vor, dass es mehr als zwei mögliche Alternativen gibt. Da wir ifs beliebig schachteln können, ist dies eigentlich kein Problem. Aber es ist weder elegant noch effizient, wenn wir solchen Code schreiben.
+
+Sie haben in Java eine Konstruktion kennengelernt, die eine Mehrfachverzweigung zulässt. So eine Konstruktion gibt es auch in bash.
+
+Damit nachher sinnvolle Aufgaben gestellt werden können, wird zuerst aber noch der Befehl read vorgestellt.
+
+read - Benutzereingaben einlesen
+read kann Eingaben aus unterschiedlichen Quellen einlesen. Für uns ist im Augenblick interessant, dass Eingaben des Benutzers von der Tastatur eingelesen werden können. Dies geschieht so:
+
+# "lange" Variante
+
+echo "Name:" # Was soll der Benutzer eingeben?
+
+read name    # Eingabe von der Tastatur lesen
+
+echo $name   # eingelesenen Wert ausgeben
+
+
+
+# "kurze" Variante
+
+read -p "Name:" name  # read gibt auch noch gleich den Prompt mit
+
+echo $name            # eingelesenen Wert ausgeben
+
+Damit müssen wir jetzt zum Beispiel nicht mehr alle Eingaben als Parameter erhalten. Wir haben auch die Möglichkeit, beim Benutzer nach Informationen zu fragen.
+
+case - mehr als nur zwei Entscheidungsmöglichkeiten
+Der grundsätzliche Aufbau von case sieht so aus:
+
+case variable in
+
+  wert1)
+
+    befehl1
+
+    befehl2;;
+
+  wert2)
+
+    befehl3;;
+
+  wert3 | wert4)
+
+    befehl4;;
+
+  *)
+
+    befehl5;;
+
+esac
+
+Dabei stehen wert1..wert4 für beliebige Werte, auf die getestet wird. Der Stern steht für jeden beliebigen Wert. befehl1..befehl5 sind irgendwelche Befehle. Für jede mögliche Wahl kanneine beliebig lange Befehlsfolge ausgeführt werden. Wichtig ist, dass nach dem letzten Befehl der Befehlsfolge zwei Semikolon folgen (;;).
+
+Mit der case-Konstruktion ist es möglich, einfache Menus zu schreiben. Hier ist ein möglicher Auszug aus einem Script:
+
+# Annahme: in $1 steht ein Dateiname
+
+echo "Was möchten Sie machen?"
+
+echo "1 - Datei löschen"
+
+echo "2 - Schreibrecht setzen"
+
+echo "3 - Ausführungsrecht setzen"
+
+
+
+read -p "Ihre Wahl: " selection
+
+
+
+case $selection in
+
+  1)
+
+    rm "$1";;
+
+  2)
+
+    chmod u+w "$1";;
+
+  3)
+
+    chmod u+x "$1";;
+
+  *)
+
+    echo "Ungültige Wahl!"
+
+esac
+
+Versuchen Sie, dieses Codestück oben in ein eigenes kleines Script einzubauen und damit herumzuspielen. Beachten Sie dabei auch die Information unten.
+
+Bei den einzelnen Entscheidungsmöglichkeiten kann auch auf mehr als einen Wert getestet werden. Die Werte müssen dann einfach durch ein | (senkrechter Strich) voneinander getrennt sein.
+
+Das Menu vom vorherigen Beispiel könnte auch so geschrieben werden, dass nicht Ziffern als Eingabe verlangt werden sondern Buchstaben. Da wäre es gut, wenn sowohl der entsprechende Kleinbuchstabe wie der Grossbuchstabe die passende Aktion auslösen. Dies kann so erreicht werden:
+
+echo "Was möchten Sie machen?"
+
+echo "L - Datei löschen"
+
+echo "S - Schreibrecht setzen"
+
+echo "A - Ausführungsrecht setzen"
+
+
+
+read -p "Ihre Wahl: " selection
+
+
+
+case $selection in
+
+  l|L)
+
+    rm "$1";;
+
+  s|S)
+
+    chmod u+w "$1";;
+
+  a|A)
+
+    chmod u+x "$1";;
+
+  *)
+
+    echo "Ungültige Wahl!"
+
+esac
+
+
+Kompetenzen
+5G: Ich kann ohne Hilfsmittel verschiedene Schleifentypen benennen und ihre sinnvolle Anwendung beschreiben.
+
+5F: Ich kann verschiedene Schleifentypen in einfachen Scripts anwenden.
+
+5E: Ich kann Schleifen für die Verarbeitung von Systemaufgaben (Verzeichnisse/Dateien) anwenden.
+
+for-Schleife
+Sie haben unterschiedliche Wege kennengelernt, wie Sie in Java Schleifen programmieren können. Diese Art von Schleifen stehen uns auch bei bash-Scripts zur Verfügung. Es ist die gleiche Idee, sieht aber ein wenig anders aus.
+
+Schauen wir uns zuerst den grundsätzlichen Aufbau einer for-Schleife an:
+
+for variable in <liste>
+
+do
+
+befehl1
+
+befehl2
+
+done
+
+Dabei ist variable der Name einer Variable, die nacheinander jeden Wert der Liste erhalten wird und mit der wir im do-Block arbeiten können.
+
+Hier ein einfaches Beispiel, das nicht allzu viel Sinn macht, aber das Prinzip gut zeigt:
+
+for i in A B C D
+
+do
+
+echo $i
+
+done
+
+Die entsprechende Ausgabe sieht dann so aus:
+
+A
+
+B
+
+C
+
+D
+
+Arbeit mit Verzeichnissen
+Interessant wird die for-Schleife, wenn in der Liste Dateinamen stehen. Wenn wir als Liste zum Beispiel einfach einen * angeben, so werden alle Dateinamen im aktuellen Verzeichnis in die Liste übernommen.
+
+Der Beispielcode unten gibt also einfach alle Dateinamen im aktuellen Verzeichnis aus.
+
+for fname in *
+
+do
+
+echo $fname
+
+done
+
+Es ist aber auch möglich, den Pfad des Verzeichnisses anzugeben, dessen Dateien bearbeitet werden sollen. Ausserdem können die Dateinamen auch gefiltert werden.
+
+for fname in /etc/profile.d/*.sh
+
+do
+
+echo $fname
+
+done
+
+Diese Variante ist aber nicht immer geeignet. Bei der oberen Variante enthält fname lediglich den Dateiname (z.B. test.sh). Bei der zweiten Variante enthält fname auch den kompletten Pfad, also  z.B. /etc/profile.d/test.sh.
+
+Arbeit mit Zahlen
+Wir haben die for-Schleife dazu benutzt, über die Dateien in einem Verzeichnis zu iterieren. Man kann aber zum Beispiel auch über einen Zahlenbereich iterieren. Das könnte so aussehen:
+
+for i in {1..10}
+
+do
+
+echo $i
+
+done
+
+Testen Sie die Zeilen oben in einem Script.
+
+Ändern Sie die Zeilen nun so ab wie unten dargestellt und vergleichen Sie die Ausgabe.
+
+for i in {01..10}
+
+do
+
+echo $i
+
+done
+
+Das funktioniert gut, wenn wir den Anfangs- und den Endwert bereits kennen. Wenn wir aber mit Parametern arbeiten möchten, klappt das nicht.
+
+Für diese Situation gibt es aber eine for-Konstruktion, die fast so aussieht, wie wir es aus anderen Sprachen kennen (es folgt hier nur die Zeile mit for und nicht die ganze Schleife):
+
+for ((i=$1; i<$2; i++))
+
+(Beachten Sie die doppelten Klammern.)
+
+Nehmen wir an, wir möchten ein Script schreiben, das als Parameter ein Anfangs- und ein Endjahr erhält. Für jedes Jahr soll das Script ein Unterverzeichnis erstellen. Jedes dieser Unterverzeichnisse soll dann pro Monat ein weiteres Unterverzeichnis erhalten.
+
+Dies könnte so aussehen:
+
+#!/bin/bash
+
+
+
+for ((i=$1; i<=$2; i++))
+
+do
+
+    mkdir $i
+
+    cd $i
+
+    for j in {01..12}
+
+    do
+
+        mkdir $j
+
+    done
+
+    cd -
+
+done
+
+while-Schleife
+Die while-Anweisung funktioniert eigentlich so wie if, nur wird am Ende der Schleife wieder getestet, ob die Bedingung immer noch erfüllt ist. Die Syntax ist aber anders. Grundsätzlich sieht die Anweisung so aus:
+
+while bedingung
+
+do
+
+befehl1
+
+befehl2
+
+done
+
+Hier ist ein Beispiel für eine kleine Schleife mit while. Es wird einfach die Variable count von 1 bis 5 hochgezählt und in jedem Schleifendurchlauf der aktuelle Wert ausgegeben. Am Ende gibt es eine kurze Erfolgsmeldung.
+
+count=1
+
+while [ $count -le 5 ]
+
+do
+
+echo $count
+
+let count=$count+1
+
+done
+
+echo "Finished."
+
+Die while-Schleife kann auch verwendet werden, um Dateien zeilenweise abzuarbeiten. Dies wird bei der Kompetenz "Ein- und Ausgabe" behandelt.
+
+Schleife abbrechen
+Bei jeder Iteration wird bei einer Schleife die Laufbedingung kontrolliert, um zu testen, ob noch eine weitere Iteration folgen soll.
+
+Mit dem Befehl break lässt sich eine Schleife zusätzlich jederzeit unterbrechen. Hier ein kleines symbolisches Beispiel dazu.
+
+while bedingung
+
+do
+
+befehl1
+
+break		# befehl1 wird noch ausgeführt, befehl2 nicht mehr
+
+befehl2
+
+done
+
+
+Kompetenzen
+6G: Ich kann ohne Hilfsmittel die Bedeutung und Anwendung von Funktionen beschreiben.
+
+6F: Ich kann in einem Script Programm-Strukturen in Funktionen ausgliedern und dann aufrufen.
+
+6E: Ich kann in einem Script auch verschachtelte und rekursive Programm-Strukturen mit Funktionen erstellen.
+
+Eine Funktion kann man sich in bash vorstellen wie ein Script in einem Script. Codeteile können als Funktionen deklariert und dann mehrmals aufgerufen werden.
+
+Wie in anderen Sprachen auch können bash-Funktionen Parameter und lokale Variablen haben. Sie können auch Werte zurückgeben.
+
+Hier ein kommentiertes Beispiel einer Funktion, die zwei Zahlen addiert und die Summe zurückgibt.
+
+#!/bin/bash
+
+
+
+my_func() {	# zwischen den runden Klammern darf absolut nichts stehen
+
+    # $1 und $2 innerhalb der Funktion sind die Parameter, mit denen die
+
+    # Funktion aufgerufen wurde
+
+    local sum=$(($1 + $2))	# sum ist eine lokale Variable
+
+    echo $sum			# der Wert von sum wird zurückgegeben
+
+}
+
+
+
+# um zu zeigen, dass die Funktion nicht einfach die Script-
+
+# Parameter verarbeitet, werden sie umkopiert und verändert 
+
+x=$1-1	# $1 ist der 1. Parameter, mit dem das Script gestartet wurde
+
+y=$2-1	# $2 ist der 2. Parameter, mit dem das Script gestartet wurde
+
+
+
+summe=$(my_func $x $y)	# um einen Rückgabewert zu erhalten, erfolgt
+
+                        # der Aufruf immer mit $(...)
+
+echo "Resultat ist gleich " $summe
+
+Es gibt noch eine zweite Variante, wie die erste Zeile geschrieben werden kann:
+
+function my_func {
+
+Wenn wir also mit dem reservierten Wort function beginnen, können wir uns die runden Klammern sparen. Verwenden Sie die Variante, die Ihnen besser gefällt; es gibt von der Funktionalität her keine Unterschiede.
+
+HInweise
+bash-Scripts werden von oben nach unten abgearbeitet. Deshalb muss die Deklaration einer Funktion immer vor dem ersten Aufruf der Funktion stehen.
+
+Durch die Deklaration wird die Funktion nicht aufgerufen. bash merkt sich lediglich, wo die Funktion steht, damit es die Funktion ausführen kann, wenn tatsächlich ein Aufruf erfolgt.
+
+Falls eine Funktion nichts zurückgibt, muss der Aufruf nicht in $(   ) stehen. Für den Aufruf reicht dann einfach der Name (s. Beispiel unten).
+
+In einer Funktion kann alles gemacht werden, was auch im restlichen Script gemacht werden kann. Das bedeutet, dass auch andere Funktionen aufgerufen werden können. Hier ein kleines Beispiel mit zwei Funktionen (ohne Parameter und Rückgabewerte).
+
+#!/bin/bash
+
+
+
+function first {
+
+    echo "this is the first function"
+
+}
+
+
+
+function second {
+
+    first
+
+    echo "this is the second function"
+
+}
+
+
+
+second
+
+Zuerst werden die beiden Funktionen deklariert (also noch nicht ausgeführt). Am Ende des Scripts ist dann die Anweisung, die zweite Funktion auszuführen, die ihrerseits die erste Funktion aufruft.
+
+Hier noch das gleiche Beispiel wie oben, aber die beiden Funktionen erhalten Parameter. Können Sie voraussagen, wie die Ausgabe aussieht, bevor Sie das Script laufen lassen?
+
+#!/bin/bash
+
+
+
+function first {
+
+    echo $1
+
+    echo "this is the first function"
+
+}
+
+
+
+function second {
+
+    first $2
+
+    echo $1
+
+    echo "this is the second function"
+
+}
+
+
+
+second 17 23
+
+Da Funktionen andere Funktionen aufrufen können, sind sie auch in der Lage, sich selbst aufzurufen. Dies nennt man Rekursion. Hier ist ein kleines Beispiel für eine rekursive Funktion.
+
+#!/bin/bash
+
+
+
+function recursion {
+
+    echo $1
+
+
+
+    if [ $1 -eq 0 ]
+
+    then
+
+        return
+
+    fi
+
+
+
+    recursion $(($1 - 1))
+
+}
+
+
+
+recursion 10
+
+Wichtig bei einer rekursiven Funktion ist, dass eine Abbruchbedingung formuliert wird. Im obigen Beispiel hört die Funktion auf, sich selbst aufzurufen, wenn der übergebene Parameter den Wert 0 hat. Mit return wird in diesem Fall die Funktion beendet.
+
+
+Kompetenzen
+7G: Ich kann ohne Hilfsmittel erklären, wie die Ein- und Ausgabe von Scripts funktioniert (Kanäle).
+
+7F: Ich kann die Ausgabe von Scripts in eine oder mehrere Dateien umleiten (beim Start des Scripts oder aus dem Code heraus).
+
+7E: Ich kann ein Script so schreiben, dass es notwendige Eingaben aus einer oder mehreren Dateien einliest.
+
+Kanäle
+Wir sind uns gewohnt, dass unsere Scripts (oder Programme allgemein) irgendwelche Textausgaben direkt auf dem Bildschirm ausgeben. Wir haben aber auch gesehen, wie wir in einem Script, Eingaben vom Benutzer einlesen können.
+
+Es gibt aber immer wieder Situationen, in denen dieses Verhalten nicht ideal ist. Es kann zum Beispiel sein, dass ein Programm sehr schnell sehr viele Informationen ausgibt. Wir sind dann gar nicht in der Lage, alles zu lesen. Bash bietet uns zum Glück einen einfachen Weg damit umzugehen.
+
+Standardmässig erwarten Shell-Kommandos Eingaben über die Tastatur und geben Resultate und Fehlermeldungen auf dem Bildschirm aus. Diese Ein- und Ausgaben werden innerhalb der Bash über Kanäle gelenkt. Und diese Kanäle lassen sich umleiten.
+
+Die folgenden Kanäle stehen zur Verfügung:
+
+Kanal 0	= standard input (stdin)	= Eingabe über die Tastatur
+
+Kanal 1	= standard output (stdout)	= normale Textausgabe auf den Bildschirm
+
+Kanal 2	= standard error (stderr)	= Ausgabe von Fehlermeldungen auf den Bildschirm
+
+Umleitung der Ausgabe
+Wenn wir zum Beispiel ein Inhaltsverzeichnis anzeigen möchten, aber die Ausgabe direkt in eine Datei speichern möchten, dann funktioniert das so:
+
+ls -l 1> dir.txt
+
+Das 1> dir.txt bedeutet, dass der Kanal 1 in die Datei dir.txt umgeleitet wird. Wichtig: zwischen der 1 und dem > darf KEIN Leerzeichen stehen.
+
+Da der Kanal 1 der am häufigsten umgeleitete Kanal ist, kann man die 1 auch weglassen. Der folgende Befehl bewirkt also genau das gleiche:
+
+ls -l > dir.txt
+
+Führen Sie diesen Befehl einmal aus und schauen Sie sich die Datei dir.txt an. Die Datei wird bei jedem Aufruf wieder überschrieben. Falls Sie den Inhalt einer bestehenden Datei nicht überschreiben, sondern einfach nur neuen Inhalt hinzufügen möchten, dann können Sie das auf diese Weise machen:
+
+ls -l >> dir.txt
+
+Versuchen Sie nun einmal den folgenden Befehl:
+
+cp -v dir.txt > cp.txt
+
+(Die Option -v bewirkt, dass cp im Erfolgsfall hinschreibt, was gemacht wurde.)
+
+Dieser Befehl ist nicht korrekt und es ist eine Fehlermeldung erschienen. Diese Fehlermeldung wird auf dem Bildschirm ausgegeben, obwohl die Textausgabe in eine Datei umgeleitet wurde. Der Grund ist, dass Fehlermeldungen über einen anderen Kanal ausgegeben werden.
+
+Wenn Sie den folgenden Befehl ausführen, dann wird die Fehlermeldung in eine eigene Datei geschrieben:
+
+cp -v dir.txt > cp.txt 2> error.txt
+
+Es werden also zwei Umleitungen gemacht:
+
+die normale Textausgabe wird in die Datei cp.txt umgeleitet
+
+die Ausgabe von Fehlermeldungen (Kanal 2) wird in die Datei error.txt umgeleitet
+
+Diese beiden Umleitungen lassen sich auch kombinieren. Wenn wir alle Meldungen in einer Datei haben möchten, dann schreiben wir (wobei die Reihenfolge unbedingt einzuhalten ist):
+
+cp -v dir.txt > cp.txt 2>&1
+
+Das 2>&1 bedeutet, dass der Kanal 2 auf den Kanal 1 umgeleitet wird. Damit erscheinen alle Textausgaben in der gleichen Datei.
+
+Es gibt auch eine modernere Variante dieser Umleitung:
+
+cp -v dir.txt &> cp.txt
+
+cp -v dir.txt &>> cp.txt
+
+Beide Male werden die normale Textausgabe und die Fehlermeldungen in die gleiche Datei geleitet. Die zweite Version bewirkt, dass die Datei nicht überschrieben wird.
+
+Manchmal möchten Sie aber überhaupt keine Textausgaben sehen. Dann gibt es dafür eine besondere Lösung. Die Ausgabe kann auf ein spezielles Gerät umgeleitet werden:
+
+cp -v dir.txt 2> /dev/null
+
+/dev/null ist sozusagen der Mülleimer für Bash. Was zu diesem Gerät umgeleitet wird, erscheint nirgends.
+
+Die Ausgabe kann nicht nur beim Aufruf eines Scripts umgeleitet werden. Sie kann auch innerhalb eines Scripts für Befehle angewendet werden.
+
+Umleitung der Eingabe
+Bis jetzt haben wir Benutzereingaben immer von der Tastatur eingelesen. Mit dem Befehl read haben wir z.B. einen Namen oder einen anderen Text eingelesen.
+
+Wir haben aber nirgends gesagt, dass read die Information von der Tastatur holen soll. Das macht der Befehl auch nicht, sondern er schaut nach, was im Kanal 0 für Daten vorhanden sind.
+
+Mit einer Umleitung können wir festlegen, dass die Daten für diesen Kanal nicht von der Tastatur sondern von einer Datei kommen. Machen Sie das folgende:
+
+Erstellen Sie ein Script mit dem Namen inputtest.sh und folgendem Inhalt:
+
+#!/bin/bash
+
+echo Name
+
+read name
+
+echo $name
+
+Nun erstellen Sie im gleichen Verzeichnis eine Datei name.txt. In diese Datei schreiben Sie Ihren Namen hinein. Sie könnte also aussehen wie:
+
+Meier
+
+Machen Sie jetzt mit diesen Dateien 2 Tests:
+
+Starten sie das Programm wie gewohnt mit
+./inputtest.sh
+→ Sie müssen wie gewohnt Ihren Namen über die Tastatur eingeben
+
+Starten sie das Programm jetzt mit
+./inputtest.sh < name.txt
+→ der Name wird aus der Datei name.txt gelesen
+
+Auf diese Weise können Sie nun die Eingaben für ein Script aus einer Datei holen, statt von der Tastatur. Ein Script muss dann nicht interaktiv ausgeführt werden, sondern kann automatisch ablaufen. Und dies ohne am Script irgendetwas zu ändern.
+
+Datei einlesen mit while
+Wir können aber auch den Befehl read zusammen mit while verwenden, denn es wird erkannt, ob eine Zeile eingelesen wurde oder nicht. Mit den folgenden Codezeilen können wir uns eine ganze Datei anschauen:
+
+while read zeile
+
+do
+
+echo $zeile
+
+done
+
+Welche Datei wir einlesen möchten, können wir auf verschiedene Arten festlegen:
+
+ausserhalb des Scripts: wir können beim Aufruf des Scripts angeben, dass die Eingabe aus einer Datei erfolgen soll (als Scriptname wird hier showfile.sh angenommen)
+./showfile.sh < datei.txt
+
+innerhalb des Scripts: wir können am Ende der while-Schleife angeben, dass der Input aus einer Datei kommen soll
+
+while read zeile
+do
+  echo $zeile
+done < datei.txt
+
+Die erste Variante ist flexibel, weil wir beim Schreiben des Scripts den Namen der Datei noch nicht kennen müssen.
+
+Bei der zweiten Variante können wir dafür auf verschiedene Dateien zugreifen. Ausserdem könnten wir den oder die Dateinamen als Parameter erhalten.
+
+Verknüpfung von Scripts
+Genau wie Programme können wir auch Scripts miteinander verknüpfen. Es folgt ein Beispiel für die Verkettung von zwei Scripts. Bauen Sie das Beispiel nach und versuchen Sie zu verstehen, was genau passiert.
+
+Zuerst braucht es eine Datei name.txt, die ein paar Einträge enthalten sollte.
+
+Meier
+
+Huber
+
+Dann brauchen wir ein Script first.sh, welches die Datei name.txt zeilenweise ausgibt:
+
+#!/bin/bash
+
+echo Beginn der Ausgabe von first.sh
+
+
+
+while read line
+
+do
+
+  echo $line
+
+done < name.txt
+
+
+
+echo Ende der Ausgabe von first.sh
+
+Sie sehen, dass im Script selbst die Datei name.txt als Eingabe verwendet wird.
+
+Jetzt braucht es noch ein zweites Script. Dieses soll einfach die Eingabe auf dem Bildschirm ausgeben.
+
+#!/bin/bash
+
+echo Beginn der Ausgabe von second.sh
+
+
+
+while read line
+
+do
+
+  echo $line
+
+done
+
+
+
+echo Ende der Ausgabe von second.sh
+
+Beachten Sie, dass das zweite Script als Eingabe nicht die Datei name.txt erhält, sondern alles, was vom ersten Script ausgegeben wird.
+
+Entsprechend sehen Aufruf und Ergebnis der beiden Scripts so aus:
+
+./first.sh | ./second.sh
+
+
+
+Beginn der Ausgabe von second.sh
+
+Beginn der Ausgabe von first.sh
+
+Meier
+
+Huber
+
+Ende der Ausgabe von first.sh
+
+Ende der Ausgabe von second.sh
+
+Versuchen Sie, die Ausgabe der beiden Scripts nachzuvollziehen.
+
+Auf diese Weise lassen sich Befehlsketten bilden, bei der mehrere Programme zum Gesamtergebnis beisteuern.
+
+
+Kompetenzen
+8G: Ich kann ein Script zu einem beliebigen Zeitpunkt ausführen lassen.
+
+8F: Ich kann ein Script zu beliebigen Zeitpunkten wiederholt ausführen lassen.
+
+8E: Ich kann ein Script auch zu einem Systemereignis (wie Boot) ausführen lassen und die Ausgaben des Scripts in eine Datei umleiten.
+
+Hinweis
+Der Text auf dieser Seite stammt komplett von der Seite de.linux-console.net/?p=16592. Es wurden lediglich kleine Anpassungen vorgenommen.
+
+Beachten Sie, dass für den Aufruf eines Scripts immer der komplette absolute Pfad angegeben werden muss. Darauf wird im untenstehenden Text leider nicht eingegangen. Ein Eintrag in Ihrer crontab-Datei könnte also zum Beispiel so aussehen:
+
+5 4 * * * /home/username/scripts/script01.sh
+
+(Die genaue Bedeutung dieser Zeile werden Sie bald erfahren. Beachten Sie aber, dass nicht einfach nur der Name des Scripts dasteht, sondern der komplette Pfad.)
+
+Das muss auch gemacht werden, wenn Sie die Ausgabe Ihres Scripts in eine Datei umleiten möchten. Es muss auch wieder der komplette Pfad zur Datei angegeben werden. Hier ein Beispiel:
+
+5 4 * * * /home/username/scripts/script01.sh > /home/username/logs/script01.log
+
+Cron-Jobs: Komplettes Einsteiger-Tutorial
+Cron ist das nützlichste Dienstprogramm in einem Linux- oder UNIX-ähnlichen Betriebssystem, das die Ausführung von Befehlen oder Skripts nach einem bestimmten Zeitplan ohne Benutzereingriff ermöglicht. Die geplanten Befehle und Skripte werden auch als Cron-Jobs bezeichnet. Es wird hauptsächlich zur Automatisierung wiederkehrender Aufgaben wie der Durchführung geplanter Backups, der Bereinigung temporärer Dateien, der Systemwartung und verschiedener anderer wiederkehrender Aufgaben verwendet. Es ähnelt dem Taskplaner im Windows-Betriebssystem.
+
+In diesem Tutorial geben wir Ihnen eine grundlegende Einführung in alles, was Sie zum Planen eines Jobs mit Cron verstehen müssen. Dazu gehören die grundlegende Syntax von Cron, das Bearbeiten der Crontab-Datei, das Planen eines Jobs mit Cron mit einigen Beispielen, das Anzeigen von Cron-Jobs usw.
+
+Grundlagen von Cron Job
+Lassen Sie uns einige Grundlagen eines Cronjobs verstehen.
+
+Was ist Crond?
+Crond ist der Daemon im Linux-System, der im Hintergrund läuft und jede Minute prüft, ob zu diesem Zeitpunkt ein Job geplant ist. Wenn dies der Fall ist, führt es diese Aufgabe aus, andernfalls bleibt es inaktiv.
+
+Cron-Job-Syntax
+Die Syntax für den Cron-Job lautet wie folgt:
+
+* * * * * command/script
+
+Von links:
+
+Das erste * entspricht den Minuten (0-59)
+
+Das zweite * entspricht den Stunden (0-23)
+
+Das dritte * entspricht dem Tag des Monats (1-31)
+
+Das vierte * entspricht dem Monat des Jahres (1-12)
+
+Das fünfte * entspricht dem Wochentag (0-6, Sonntag bis Samstag)
+
+Um mehrere Werte in einem Feld anzugeben, verwenden Sie die folgenden Operatorsymbole:
+
+Sternchen (*): Um alle möglichen Werte für ein Feld anzugeben
+
+Bindestrich (-): Zur Angabe eines Wertebereichs
+
+Das Komma (,): Zum Angeben einer Werteliste
+
+Trennzeichen (/): Zur Angabe eines Schrittwerts
+
+
+Bearbeiten der Crontab-Datei
+Crontab ist eine Datei, die die geplanten Jobs in einer bestimmten Syntax enthält. Es gibt zwei Arten von Crontab-Dateien; eine für systemspezifische Cron-Jobs und die andere für benutzerspezifische Cron-Jobs.
+
+System-Cron-Jobs
+Die systemweiten Cron-Jobs befinden sich in der Datei /etc/crontab und im Verzeichnis /etc/cron.d und werden über /etc/cron ausgeführt .hourly, /etc/cron.daily, /etc/cron.weekly und /etc/cron.monthly. Nur ein Systemadministrator kann auf diese Dateien zugreifen.
+
+Ein Systemadministrator kann einen Cron-Job mit dem folgenden Befehl definieren:
+
+$ nano /etc/crontab
+
+Hier ist die Syntax des Jobs in der Datei /etc/crontab:
+
+# min hr dayofmonth month dayofweek username command
+
+* * * * * user1 ifconfig
+
+
+Benutzerspezifische Cron-Jobs
+Die benutzerspezifischen Cron-Jobs befinden sich im Verzeichnis /var/spool/cron/crontabs. Obwohl Sie diese Jobs manuell bearbeiten können, wird empfohlen, sie mit dem Befehl crontab -e zu bearbeiten.
+
+Ein Standardbenutzer kann einen Cron-Job mit dem folgenden Befehl definieren:
+
+$ crontab -e
+
+Wenn Sie beispielsweise als „Test“-Benutzer angemeldet sind, wird durch Ausführen des Befehls crontab -e die Crontab-Datei für den „Test“-Benutzer bearbeitet. Wenn Sie als Root-Benutzer angemeldet sind, bearbeitet der Befehl crontab -e gleichermaßen die Crontab-Datei für den Root-Benutzer.
+
+Geben Sie den folgenden Befehl im Terminal ein, um die Crontab-Datei für einen anderen Benutzer zu bearbeiten:
+
+$ sudo crontab -u <username> -e
+
+Wenn Sie beispielsweise als Benutzer „test1“ angemeldet sind und die Crontab-Datei für den Benutzer „test2“ bearbeiten möchten, lautet der Befehl:
+
+$ sudo crontab -u test2 -e
+
+Hier ist die Syntax des Cron-Jobs, der in der Crontab-Datei hinzugefügt werden kann:
+
+# m h dayofmonth month dayofweek command
+
+* * * * * ifconfig
+
+
+Crontab-Befehle
+Der Befehl crontab wird zum Bearbeiten, Auflisten und Entfernen der Cron-Jobs verwendet:
+
+crontab -e Zum Bearbeiten der Crontab-Datei des aktuellen Benutzers
+
+crontab -l Zum Anzeigen des Inhalts der Crontab-Datei
+
+crontab -u [Benutzername] Um die Crontab-Datei eines anderen Benutzers zu bearbeiten
+
+crontab -r Zum Entfernen der Crontab-Datei des aktuellen Benutzers
+
+crontab -i Zum Anzeigen einer Eingabeaufforderung vor dem Entfernen der Crontab-Datei des aktuellen Benutzers
+
+
+Planen eines Jobs mit Cron
+Mit Cron können Sie einen Job zu einer bestimmten Zeit, an einem bestimmten Datum und in bestimmten Intervallen mit einer Mindesteinheit in Minuten ausführen, d. h. Sie können einen Job jede Minute ausführen.
+
+Um einen Job mit Cron zu planen, öffnen Sie die Crontab-Datei mit der im vorherigen Abschnitt beschriebenen Methode. Sobald Sie die Crontab-Datei geöffnet haben, werden Sie aufgefordert, einen Texteditor auszuwählen. Geben Sie eine Zahl ein, um Ihren bevorzugten Texteditor auszuwählen. Scrollen Sie nach unten bis zum Ende der Datei und fügen Sie Jobs in der oben beschriebenen Syntax hinzu. Jede Zeile in einer Datei gibt einen Befehl an. Die ersten fünf Einträge in der Zeile geben die geplante Zeit an und der letzte Eintrag gibt an, welcher Befehl oder welches Skript ausgeführt werden soll.
+
+Beispiel:
+
+Die folgende Zeile in der Crontab-Datei plant den Cron-Job so, dass er den Befehl/das Skript alle 30 Minuten in der Stunde 5 (also 5:00 Uhr und 5:30 Uhr) an jedem Wochentag von Montag bis Samstag ausführt.
+
+*/30 5 * * 1-6 command/script
+
+Minuten
+
+In diesem Feld geben wir die Minuten an, in denen der Befehl ausgeführt werden soll. Der Wert liegt zwischen 0 und 59. Das * in diesem Feld bedeutet, dass der Job jede Minute ausgeführt wird. In der obigen Crontab-Zeile weist */30 den Cron-Job an, den angegebenen Befehl/das angegebene Skript alle 30 Minuten auszuführen.
+
+Stunden
+
+In diesem Feld geben wir die Stunden an, zu denen der Befehl ausgeführt werden soll. Der Wert liegt zwischen 0 und 23. Das * in diesem Feld bedeutet, dass der Job stündlich ausgeführt wird. In der obigen Crontab-Zeile weist der Wert 5 den Cron-Job an, den angegebenen Befehl/das angegebene Skript in der Stunde 5 auszuführen.
+
+Tag des Monats
+
+In diesem Feld geben wir die jeweiligen Tage des Monats an, an denen der Befehl ausgeführt werden soll. Der Wert liegt zwischen 1 und 31. Das * in diesem Feld bedeutet jeden Tag. In der obigen Crontab-Zeile weist das * den Cron-Job an, jeden Tag den angegebenen Befehl/das angegebene Skript auszuführen.
+
+Monat des Jahres
+
+In diesem Feld geben wir die jeweiligen Monate an, in denen der Befehl ausgeführt werden soll. Die Angabe erfolgt zwischen 1 und 12. Das * in diesem Feld bedeutet jeden Monat. In der obigen Crontab-Zeile weist das * den Cron-Job an, jeden Monat den angegebenen Befehl/das angegebene Skript auszuführen.
+
+Wochentag
+
+In diesem Feld geben wir die jeweiligen Wochentage an, an denen der Befehl ausgeführt werden soll. Sie wird von Sonntag bis Samstag von 0 bis 6 angegeben (0 für Sonntag und 6 für Samstag). Das * in diesem Feld bedeutet jeden Tag in einer Woche. In der obigen Crontab-Zeile weist das * den Cron-Job an, den angegebenen Befehl/das angegebene Skript jede Woche jeweils von Montag bis Samstag auszuführen.
+
+
+Beispiele für Cron-Jobs
+Hier ein paar Beispiele für Cron-Jobs:
+
+Führen Sie alle 15 Minuten einen Cronjob aus
+
+Um einen Cron-Job so zu planen, dass er alle 15 Minuten ausgeführt wird, fügen Sie die folgende Zeile in die Crontab-Datei ein:
+
+*/15 * * * * command/script
+
+Führen Sie jeden Tag um 5 Uhr morgens einen Cronjob aus
+
+Um einen Cron-Job so zu planen, dass er jeden Tag um 5 Uhr morgens ausgeführt wird, fügen Sie die folgende Zeile in die Crontab-Datei ein:
+
+0 5 * * * command/script
+
+Führen Sie jeden Tag um 17:00 Uhr einen Cronjob aus
+
+Um einen Cron-Job so zu planen, dass er jeden Tag um 17:00 Uhr ausgeführt wird, fügen Sie die folgende Zeile in die Crontab-Datei ein:
+
+0 17 * * * command/script
+
+Führen Sie am ersten Tag jedes Monats um 9 Uhr morgens einen Cronjob aus.
+
+Um einen Cron-Job so zu planen, dass er am ersten Tag jedes Monats um 9 Uhr ausgeführt wird, fügen Sie die folgende Zeile in die Crontab-Datei ein:
+
+0 9 1 * * command/script
+
+Führen Sie stündlich am 15. März einen Cronjob aus
+
+Um jeden 15. März stündlich einen Cron-Job zu planen, fügen Sie die folgende Zeile in die Crontab-Datei ein:
+
+0 * 15 3 * command/script
+
+Führen Sie alle 5 Stunden einen Cronjob aus
+
+Um alle 5 Stunden einen Cron-Job zu planen, fügen Sie die folgende Zeile in die Crontab-Datei ein:
+
+0 */5 * * * command/script
+
+Führen Sie alle 15 Minuten einen Cronjob aus
+
+Um einen Cron-Job so zu planen, dass er alle 15 Minuten ausgeführt wird, fügen Sie die folgende Zeile in die Crontab-Datei ein:
+
+*/15 * * * *
+
+
+Strings verwenden
+Die folgenden Zeichenfolgen können auch zur Definition eines Jobs verwendet werden:
+
+@hourly: Um einen Job einmal pro Stunde auszuführen, d. h. „0 * * * *“
+
+@midnight: Um einen Job einmal täglich auszuführen, d. h. „0 0 * * *“
+
+@daily: wie Mitternacht
+
+@weekly: Um einen Job einmal pro Woche auszuführen, d. h. „0 0 * * 0“
+
+@monthly: Um einen Job einmal im Monat auszuführen, d. h. „0 0 1 * *“
+
+@annually: Um einen Job einmal im Jahr auszuführen, d. h. „0 0 1 1 *“
+
+@yearly: dasselbe wie @annually
+
+@reboot: Um einen Job einmal bei jedem Start auszuführen
+
+Um beispielsweise jede Woche ein Skript oder einen Befehl auszuführen, würde der Eintrag in der Crontab-Datei wie folgt lauten:
+
+@weekly command/script
+
+
+Vordefinierte Cron-Verzeichnisse
+Unter Linux gibt es einige vordefinierte Cron-Verzeichnisse, in denen die gespeicherten Skripte automatisch ausgeführt werden. Wenn wir ein Skript in diesen Verzeichnissen ablegen, wird es automatisch zum konfigurierten Zeitpunkt ausgeführt.
+
+/etc/cron.daily
+
+/etc/cron.hourly
+
+/etc/cron.monthly
+
+/etc/cron.weekly
+
+Um beispielsweise ein Skript einmal im Monat auszuführen, müssen Sie es in /etc/cron.monthly platzieren.
+
+
+Cron-Jobs anzeigen
+Jobs für den aktuellen Benutzer anzeigen
+Verwenden Sie den folgenden Befehl, um alle geplanten Cron-Jobs für den aktuellen Benutzer anzuzeigen:
+
+$ crontab -l
+
+
+Jobs für die Root-Benutzer anzeigen
+Um alle geplanten Jobs des Root-Benutzers anzuzeigen, geben Sie den folgenden Befehl im Terminal ein:
+
+$ cat /etc/crontab
+
+Sie müssen sich als Root-Benutzer anmelden oder den Befehl als sudo ausführen.
+
+
+Jobs für die anderen Benutzer anzeigen
+Um alle geplanten Jobs eines bestimmten Benutzers anzuzeigen, geben Sie im Terminal den folgenden Befehl ein und ersetzen Sie den durch den tatsächlichen Benutzernamen:
+
+$ sudo crontab -u <username> -l
+
+Um diesen Befehl auszuführen, benötigen Sie Sudo-Berechtigungen.
+
+
+Stündliche Cron-Jobs anzeigen
+Um alle Cron-Jobs anzuzeigen, die für die stündliche Ausführung konfiguriert sind, geben Sie den folgenden Befehl im Terminal ein:
+
+$ ls -la /etc/cron.hourly
+
+
+Sehen Sie sich tägliche Cron-Jobs an
+Um alle Cron-Jobs anzuzeigen, die für die tägliche Ausführung konfiguriert sind, geben Sie den folgenden Befehl im Terminal ein:
+
+$ ls -la /etc/cron.daily/
+
+
+Sehen Sie sich wöchentliche Cron-Jobs an
+Um alle Cron-Jobs anzuzeigen, die für die wöchentliche Ausführung konfiguriert sind, geben Sie im Terminal den folgenden Befehl ein:
+
+$ ls -la /etc/cron.weekly/
+
+
+Monatliche Cron-Jobs anzeigen
+Um alle Cron-Jobs anzuzeigen, die für die monatliche Ausführung konfiguriert sind, geben Sie den folgenden Befehl im Terminal ein:
+
+$ ls -la /etc/cron.monthly/
+
+
+Sichern Sie alle Cron-Jobs
+Es wird empfohlen, eine Sicherungskopie aller Cron-Jobs in einer Datei aufzubewahren, damit Sie sie im Falle einer Löschung wiederherstellen können. Um eine Sicherungskopie aller aktuellen Jobs zu erstellen, verwenden Sie den Umleitungsoperator, um die Ausgabe von crontab -l in eine Datei umzuleiten.
+
+$ crontab -l > backup_cron.txt
+
+
+Entfernen aller geplanten Cron-Jobs
+Um alle geplanten Cron-Jobs zu entfernen, verwenden Sie das Flag -r wie folgt:
+
+$ crontab -r
+
+
+Cron-Berechtigung
+Wir können den Zugriff auf den Befehl crontab über zwei Dateien einschränken: /etc/cron.allow und /etc/cron.deny.
+
+/etc/cron.allow – Fügen Sie Benutzer hinzu (einen pro Zeile), denen Sie Zugriff auf Crontab-Befehle gewähren möchten. Diese Benutzer können Zeitplanjobs ausführen.
+
+/etc/cron.deny – Fügen Sie Benutzer hinzu (einen pro Zeile), denen Sie den Zugriff auf Crontab-Befehle verweigern möchten. Diese Benutzer können keine geplanten Jobs ausführen.
+
+
+Crontab-Syntaxgeneratoren
+Es gibt einige Websites, die die Generierung von Syntax für Crontabs ermöglichen. Diese Websites erleichtern die Generierung von Crontab-Ausdrücken, ohne sich die Syntax merken zu müssen. Allerdings gibt es verschiedene Websites für Syntaxgeneratoren wie crontab-generator.org. Das, was ich am meisten bevorzuge und als hilfreich empfand, ist crontab.guru. Basierend auf Benutzereingaben wird ein Crontab-Ausdruck generiert, den Sie kopieren und in die Crontab-Datei einfügen können.
+
+
+Abschluss
+In diesem Tutorial haben wir die Grundlagen von Cron-Jobs, seine Syntax und die Einrichtung erklärt. Wir haben auch besprochen, wie Sie Cron-Jobs anzeigen, ein Backup erstellen und sie entfernen, wenn sie nicht mehr benötigt werden.
+
+Kompetenzen
+9G: Ich kann mit sed in einer Textdatei Ausdrücke durch andere ersetzen und Zeilen mit einem bestimmten Ausdruck löschen.
+
+9F: Ich kann aus einer Liste von Werten mit einem regulären Ausdruck gültige Werte erkennen.
+
+9E: Ich kann mit sed Ausdrücke in einer Textdatei erkennen, gruppieren und umformatieren.
+
+
+Nachdem Sie die Grundlagen von sed kennengelernt haben, geht es jetzt darum, ihn mit regulären Ausdrücken zu füttern. Darum geht es im nächsten Dokument.
+
+
+Sie können reguläre Ausdrücke direkt in Scripts verwenden. Hier als Beispiel ein Script, das überprüft, ob eine korrekte URL eingegeben wurde.
+
+#!/bin/bash
+
+
+
+read -p "Enter a URL: " url
+
+if [[ $url =~ ^(http|https)://[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$ ]]; then
+
+    echo " This is a valid URL!"
+
+else
+
+    echo "This is not a valid URL!"
+
+fi
+
+Die Visualisierung des regulären Ausdrucks sieht so aus:
+
+
+Reguläre Ausdrücke benötigen wir zum Beispiel wenn wir mit grep nach bestimmten Dateien suchen. Aber auch sed entfaltet seine ganze Stärke erst mit Hilfe von Regulären Ausdrücken. Darum geht es im nächsten Dokument.
+
+
