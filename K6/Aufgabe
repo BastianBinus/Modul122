@@ -15,6 +15,8 @@ erhalten und eine Zahl zurückgeben. Berechnen Sie darin rekursiv (also nicht mi
 Fakultät der übergebenen Zahl. (Die Fakultät von n ist gleich n multipliziert mit der Fakultät von
 n-1.) Im Script rufen Sie dann die Funktion factorial auf. - Verwenden Sie für Ihre Tests keine
 Zahlen grösser 20.
+
+
 Überlegen Sie sich eine eigene Aufgabe und schreiben Sie das entsprechende Script. Das Script
 muss zwei Funktionen enthalten und eine Funktion muss die andere aufrufen. Mindestens eine der
 beiden Funktionen muss einen Wert zurückgeben, der von der aufrufenden Funktion ausgewertet wird.

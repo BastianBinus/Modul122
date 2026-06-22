@@ -1,0 +1,5 @@
+Pizza 12.50
+Cola 3.00
+Tiramisu 5.50
+Wasser 2.00
+Pasta 14.00
