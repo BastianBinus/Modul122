@@ -1,4 +1,4 @@
 #!/bin/bash
 boot_time=$(date +%H:%M:%S)
-
-echo "boot time $boot_time" >> bootlog.txt
+cd /home/bastian
+echo "boot time: $boot_time" >> workplace/K8/bootlog.txt
