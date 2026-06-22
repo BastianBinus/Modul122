@@ -1,6 +1,26 @@
+Stufe E
 Erstellen Sie in Ihrer Arbeitsumgebung ein Script mit dem folgenden Inhalt: das folgende Script:
 #!/bin/bash
 echo "boot time $(date +%H:%M:%S)"
 Konfigurieren Sie Ihr System so, dass dieses Script bei jedem Neustart des Systems aufgerufen wird.
 Leiten Sie die Ausgabe des Scripts in eine Datei mit dem Namen bootlog.txt um.
+Dokumentieren Sie die crontab-Zeile in Ihrem Lernjournal.
+
+Stufe F
+Stellen Sie sicher, dass in Ihrer Arbeitsumgebung das Programm notify-send installiert ist.
+Erstellen Sie in Ihrer Arbeitsumgebung ein Script mit dem folgenden Inhalt und machen Sie es
+ausführbar:
+#!/bin/bash
+notify-send $(date +%H:%M:%S)
+Konfigurieren Sie Ihr System so, dass dieses Script in der aktuellen Stunde jede zweite Minute
+aufgerufen wird.
+Dokumentieren Sie die crontab-Zeile in Ihrem Lernjournal.
+
+Stufe G
+Stellen Sie sicher, dass in Ihrer Arbeitsumgebung das Programm notify-send installiert ist.
+Erstellen Sie in Ihrer Arbeitsumgebung das folgende Script:
+#!/bin/bash
+notify-send $(date +%H:%M:%S)
+Konfigurieren Sie Ihr System so, dass dieses Script nur heute zu einer bestimmten Uhrzeit aufgerufen
+wird (diese Uhrzeit liegt optimalerweise in der unmittelbaren Zukunft).
 Dokumentieren Sie die crontab-Zeile in Ihrem Lernjournal.
