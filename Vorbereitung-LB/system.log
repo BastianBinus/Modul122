@@ -1,0 +1,8 @@
+2025-06-01 08:00:01 INFO Server started successfully
+2025-06-01 08:01:15 ERROR Database connection failed
+2025-06-01 08:02:30 INFO User login: admin
+2025-06-01 08:03:45 ERROR Disk space critically low
+2025-06-01 08:04:00 INFO Backup started
+2025-06-01 08:05:12 ERROR Failed to write to /var/log
+2025-06-01 08:06:00 INFO Backup completed
+2025-06-01 08:07:33 ERROR Network timeout on port 443
