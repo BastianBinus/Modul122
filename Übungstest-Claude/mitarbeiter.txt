@@ -1,0 +1,5 @@
+Müller,Hans,IT,7500
+Meier,Anna,HR,6200
+Schmidt,Peter,IT,8100
+Koch,Lisa,HR,5900
+Bauer,Tom,IT,7200
