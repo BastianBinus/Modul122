@@ -10,11 +10,11 @@ bmiKategorien() {
     local bmi=$(bmiRechnen $1 $2)
 
     if (( bmi < 18 )); then
-        echo "BMI $bmi → Untergewicht"
+        echo "BMI $bmi -> Untergewicht"
     elif (( bmi < 25 )); then
-        echo "BMI $bmi → Normalgewicht"
+        echo "BMI $bmi -> Normalgewicht"
     else
-        echo "BMI $bmi → Übergewicht"
+        echo "BMI $bmi -> Übergewicht"
     fi
 }
 

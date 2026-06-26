@@ -1,13 +1,12 @@
 #!/bin/bash
 
-function quadrat () {
+function quadrat() {
     local zahl=$1
-    local ergebnis=$((zahl * zahl))
-    return $ergebnis
+    echo $(( zahl * zahl )) 
 }
 
-while IFS= read -r zeile; do
-    quadrat $zeile
-    echo "$zeile * $zeile = $?"
+while read -r zeile; do
+    ergebnis=$(quadrat $zeile)
+    echo "$zeile * $zeile = $ergebnis"
 done < testdata.txt
  
